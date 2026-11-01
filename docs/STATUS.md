@@ -1,6 +1,6 @@
 # Status
 
-The pilot is being built from `docs/PLAN.md`. Phases 1 to 3 of 6 are done.
+The pilot is being built from `docs/PLAN.md`. Phases 1 to 4 of 6 are done.
 
 ## Built
 
@@ -11,8 +11,8 @@ The pilot is being built from `docs/PLAN.md`. Phases 1 to 3 of 6 are done.
   - A test checks that every operation has an `operation_id`, a one-line docstring and no optional inputs.
   - `get_instructions` serves the agent's instructions from `backend/instructions.md`.
 - `agent/`: the UnderCover Agent, LangChain's `create_agent` on OpenRouter (`openai/gpt-6-luna` at low reasoning, or `MODEL_NAME`). `run(claim_id, thread_id)` starts the claim, fetches the instructions from the API, streams the agent and records each model message, tool call and tool result as a step. Its six tools (`get_claim`, `get_policy`, `get_claim_history`, `get_policy_wording`, `decide_claim`, `pay_claim`) take no ids and work only on the claim being run. The agent reaches everything through the API, and imports nothing from `backend/`.
-- `dashboard/`: still the skeleton, one page that shows whether the backend is up.
-- `e2e/`: one test of that page.
+- `dashboard/`: React, Vite and TypeScript in UnderCover's brand (`docs/BRAND.md`), light and dark from the system setting. The queue page at `/` shows the claims in each state and a table of every claim, refreshing every two seconds.
+- `e2e/`: Playwright tests on their own backend (port 8001, a new database in the system temp folder) and dashboard (port 5174), so `npm run check` never touches the development queue.
 
 ## Run it
 

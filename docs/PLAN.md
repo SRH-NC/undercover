@@ -127,11 +127,11 @@ Builds the dashboard's foundations and the queue page:
 
 Why: the queue is what the team looks at first, and the shared look and plumbing are needed by every page after it.
 
-- [ ] Vitest tests show the queue renders every claim with its status label and amounts such as $1,150.00, shows the counts, links each claim to its page, and updates a row when a poll returns a new status
-- [ ] A Playwright test shows the queue with 25 claims. Then it starts a claim through the API and the row changes to In progress without a reload. Each end-to-end test works on its own claims, so the tests can run in parallel
-- [ ] Running `npm run e2e` while `npm run dev` is running leaves the development queue unchanged (`GET /api/claims` on port 8000 is the same before and after)
-- [ ] With the Playwright MCP server, the queue page in light and in dark mode matches `docs/BRAND.md`: the fonts load (checked in computed styles), the state colors and backgrounds are right, and there are no outlines on panels or lines across the top. Screenshots are checked for both modes
-- [ ] `npm run check:ts` and `npm run e2e` pass, with coverage at 80% or more
+- [x] Vitest tests show the queue renders every claim with its status label and amounts such as $1,150.00, shows the counts, links each claim to its page, and updates a row when a poll returns a new status
+- [x] A Playwright test shows the queue with 25 claims. Then it starts a claim through the API and the row changes to In progress without a reload. Each end-to-end test works on its own claims, so the tests can run in parallel
+- [x] Running `npm run e2e` while `npm run dev` is running leaves the development queue unchanged (`GET /api/claims` on port 8000 is the same before and after)
+- [x] With the Playwright MCP server, the queue page in light and in dark mode matches `docs/BRAND.md`: the fonts load (checked in computed styles), the state colors and backgrounds are right, and there are no outlines on panels or lines across the top. Screenshots are checked for both modes
+- [x] `npm run check:ts` and `npm run e2e` pass, with coverage at 80% or more
 
 ## Phase 5: The claim page, sign-off and the instructions
 
