@@ -1,4 +1,13 @@
+import { ClaimPage } from "./ClaimPage";
+import { InstructionsPage } from "./InstructionsPage";
 import { QueuePage } from "./QueuePage";
+
+function Page({ path }: Readonly<{ path: string }>) {
+  const claim = /^\/claims\/([^/]+)$/.exec(path);
+  if (claim) return <ClaimPage claimId={decodeURIComponent(claim[1])} />;
+  if (path === "/instructions") return <InstructionsPage />;
+  return <QueuePage />;
+}
 
 export function App() {
   const path = window.location.pathname;
@@ -22,7 +31,7 @@ export function App() {
         </nav>
       </header>
       <main>
-        <QueuePage />
+        <Page path={path} />
       </main>
     </div>
   );

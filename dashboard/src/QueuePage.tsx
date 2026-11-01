@@ -1,7 +1,7 @@
 import type { DecisionKind, QueueRow } from "./api";
 import { DECISION_LABELS, STATUSES, date, humanize, money } from "./format";
 import { StatusBadge } from "./StatusBadge";
-import { usePolling } from "./usePolling";
+import { POLL_MS, useApi } from "./useApi";
 
 function Outcome({
   decision,
@@ -16,7 +16,7 @@ function Outcome({
 }
 
 export function QueuePage() {
-  const { data: claims, failed } = usePolling<QueueRow[]>("/api/claims");
+  const { data: claims, failed } = useApi<QueueRow[]>("/api/claims", POLL_MS);
 
   if (!claims) {
     return (

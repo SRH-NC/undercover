@@ -3,18 +3,23 @@ import { getJson } from "./api";
 
 export const POLL_MS = 2000;
 
-export interface Polled<T> {
+export interface Loaded<T> {
   data: T | undefined;
   failed: boolean;
   refresh: () => void;
 }
 
-export function usePolling<T>(path: string): Polled<T> {
+// Loads a path from the backend once it is known, and again every pollMs if given.
+export function useApi<T>(
+  path: string | undefined,
+  pollMs?: number,
+): Loaded<T> {
   const [data, setData] = useState<T>();
   const [failed, setFailed] = useState(false);
   const [version, setVersion] = useState(0);
 
   useEffect(() => {
+    if (!path) return;
     let active = true;
     const load = () => {
       getJson<T>(path).then(
@@ -30,12 +35,12 @@ export function usePolling<T>(path: string): Polled<T> {
       );
     };
     load();
-    const timer = setInterval(load, POLL_MS);
+    const timer = pollMs ? setInterval(load, pollMs) : undefined;
     return () => {
       active = false;
       clearInterval(timer);
     };
-  }, [path, version]);
+  }, [path, pollMs, version]);
 
   const refresh = useCallback(() => {
     setVersion((n) => n + 1);

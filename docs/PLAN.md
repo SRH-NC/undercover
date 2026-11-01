@@ -144,14 +144,14 @@ Builds the rest of the dashboard:
 
 Why: this is where a handler checks the agent's work and does the one thing the pilot needs from them, signing off large payouts.
 
-- [ ] Vitest tests show the claim page renders the story, items and total, documents, policy, claim history, decision, reasons and policy section, and each payment state. Steps show with their plain labels. The sign-off panel shows only when the claim is waiting for sign-off, and sends the chosen handler
-- [ ] A vitest test shows the instructions page renders the text with no way to edit it
-- [ ] A Playwright test opens CLM-1001 and sees its story, items, documents, policy and claim history
-- [ ] A Playwright test opens a claim, then starts it and adds steps through the API, and the steps appear on the page without a reload
-- [ ] A Playwright test of the payment block: the API approves a claim for $1,200, the page shows Waiting for sign-off, the API's payment attempt gets 403, a handler signs off in the page as Dana Whitfield, and the page shows it paid $1,200.00 with her sign-off. The queue shows it Decided
-- [ ] A Playwright test opens the instructions page and sees the instructions
-- [ ] With the Playwright MCP server, the claim page (waiting, in progress with steps, waiting for sign-off, decided) and the instructions page look right in light and dark mode, judged from screenshots
-- [ ] `npm run check:ts` and `npm run e2e` pass, with coverage at 80% or more
+- [x] Vitest tests show the claim page renders the story, items and total, documents, policy, claim history, decision, reasons and policy section, and each payment state. Steps show with their plain labels. The sign-off panel shows only when the claim is waiting for sign-off, and sends the chosen handler
+- [x] A vitest test shows the instructions page renders the text with no way to edit it
+- [x] A Playwright test opens CLM-1001 and sees its story, items, documents, policy and claim history
+- [x] A Playwright test opens a claim, then starts it and adds steps through the API, and the steps appear on the page without a reload
+- [x] A Playwright test of the payment block: the API approves a claim for $1,200, the page shows Waiting for sign-off, the API's payment attempt gets 403, a handler signs off in the page as Dana Whitfield, and the page shows it paid $1,200.00 with her sign-off. The queue shows it Decided
+- [x] A Playwright test opens the instructions page and sees the instructions
+- [x] With the Playwright MCP server, the claim page (waiting, in progress with steps, waiting for sign-off, decided) and the instructions page look right in light and dark mode, judged from screenshots
+- [x] `npm run check:ts` and `npm run e2e` pass, with coverage at 80% or more
 
 ## Phase 6: The pilot on the real queue
 

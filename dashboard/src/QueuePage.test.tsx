@@ -2,7 +2,7 @@ import { cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 import { QueuePage } from "./QueuePage";
 import { QUEUE, stubApi } from "./testing";
-import { POLL_MS } from "./usePolling";
+import { POLL_MS } from "./useApi";
 
 afterEach(() => {
   cleanup();

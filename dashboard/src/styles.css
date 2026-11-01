@@ -14,8 +14,7 @@
   --muted: #3f6370;
   --rule: #dbe4e7;
   --link: #0b6f91;
-  --sea-green-ink: #037a5b;
-  --marigold-ink: #8a5f00;
+  --raspberry-ink: #c0254d;
 
   --sans: "Instrument Sans", system-ui, sans-serif;
   --serif: "Instrument Serif", Georgia, serif;
@@ -33,8 +32,7 @@
     --muted: #94aab1;
     --rule: #17404d;
     --link: #6fcbea;
-    --sea-green-ink: #5fe8c4;
-    --marigold-ink: #ffd47e;
+    --raspberry-ink: #ff8aa6;
 
     color-scheme: dark;
   }
@@ -141,6 +139,11 @@ h2 {
   gap: 20px;
 }
 
+.stack > h1,
+.stack > p {
+  margin: 0;
+}
+
 .counts {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -221,4 +224,250 @@ tbody tr + tr td {
 
 .nowrap {
   white-space: nowrap;
+}
+
+.small {
+  font-size: 0.8125rem;
+}
+
+.stack-tight {
+  display: grid;
+  gap: 12px;
+}
+
+.claim-header {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+
+.claim-header p,
+.claim-header h1 {
+  margin: 0;
+}
+
+.claim-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .claim-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .counts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px 24px;
+  margin: 0;
+}
+
+.facts dt {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.facts dd {
+  margin: 2px 0 0;
+}
+
+.panel p {
+  margin: 0 0 10px;
+}
+
+.panel p:last-child {
+  margin-bottom: 0;
+}
+
+.verdict {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+table.compact th,
+table.compact td {
+  padding: 8px 12px 8px 0;
+}
+
+tfoot th,
+tfoot td {
+  border-top: 1px solid var(--rule);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.document {
+  background: var(--inset);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.document h3 {
+  margin: 0 0 2px;
+  font-size: 1rem;
+}
+
+pre {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.instructions {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.sign-off {
+  margin-top: 16px;
+  background: var(--inset);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.sign-off h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.sign-off-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.sign-off-row label {
+  font-weight: 600;
+}
+
+select,
+button {
+  font: inherit;
+}
+
+select {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--ink);
+}
+
+button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 999px;
+  background: var(--sea-green);
+  color: var(--midnight);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+[role="alert"] {
+  color: var(--raspberry-ink);
+  font-weight: 600;
+}
+
+.steps {
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+.steps ol {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  background: var(--inset);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.step-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.step-detail {
+  margin: 4px 0 0;
+}
+
+.step-sent {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.step details {
+  margin-top: 4px;
+}
+
+.step summary {
+  color: var(--link);
+  cursor: pointer;
+  font-size: 0.8125rem;
+}
+
+.step details pre {
+  max-height: 260px;
+  margin-top: 6px;
+  overflow-y: auto;
+}
+
+.badge.alert {
+  background: var(--raspberry);
+  color: #ffffff;
+}
+
+.working {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.working::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--marigold);
+  content: "";
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .working::before {
+    animation: none;
+  }
 }
