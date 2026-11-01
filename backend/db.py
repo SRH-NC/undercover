@@ -17,12 +17,16 @@ DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS handlers;
 DROP TABLE IF EXISTS settings;
 DROP TABLE IF EXISTS documents;
+DROP TABLE IF EXISTS decisions;
+DROP TABLE IF EXISTS payments;
+DROP TABLE IF EXISTS steps;
 
 CREATE TABLE claims (
     claim_id TEXT PRIMARY KEY,
     customer_id TEXT NOT NULL,
     policy_id TEXT NOT NULL,
     status TEXT NOT NULL,
+    thread_id TEXT,
     record TEXT NOT NULL
 );
 CREATE TABLE policies (policy_id TEXT PRIMARY KEY, record TEXT NOT NULL);
@@ -30,6 +34,30 @@ CREATE TABLE customers (customer_id TEXT PRIMARY KEY, record TEXT NOT NULL);
 CREATE TABLE handlers (handler_id TEXT PRIMARY KEY, record TEXT NOT NULL);
 CREATE TABLE settings (name TEXT PRIMARY KEY, value TEXT NOT NULL);
 CREATE TABLE documents (name TEXT PRIMARY KEY, content TEXT NOT NULL);
+
+CREATE TABLE decisions (
+    claim_id TEXT PRIMARY KEY,
+    decision TEXT NOT NULL,
+    payout REAL NOT NULL,
+    reason TEXT NOT NULL,
+    policy_section TEXT NOT NULL,
+    decided_at TEXT NOT NULL
+);
+CREATE TABLE payments (
+    claim_id TEXT PRIMARY KEY,
+    amount REAL NOT NULL,
+    signed_off_by TEXT,
+    paid_at TEXT NOT NULL
+);
+CREATE TABLE steps (
+    step_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    claim_id TEXT NOT NULL,
+    thread_id TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    name TEXT NOT NULL,
+    content TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
 """
 
 

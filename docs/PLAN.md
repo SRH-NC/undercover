@@ -87,13 +87,13 @@ Adds `start_claim`, `add_step`, `list_steps`, `decide_claim`, `pay_claim` and `s
 
 Why now: these are the business rules the agent has to work within. Building and testing them before the agent exists means the $1,000 block is proven to hold whatever the agent does.
 
-- [ ] Tests cover each move between states: start, then decline, refer, approve within the limit (decided) and approve over the limit (waiting for sign-off)
-- [ ] Tests cover each refusal: starting a decided claim, deciding a waiting claim, declining with a payout, approving with $0, paying without an approval, paying twice, paying the wrong amount, signing off a decided claim, and signing off as an unknown handler
-- [ ] Tests show the block holds: paying the full amount of an approval over $1,000 returns 403 and records no payment, paying $1,000 of a $1,500 approval is refused, and paying after a handler's sign-off is refused as already paid
-- [ ] A test shows that a sign-off pays the approved payout, records who signed off and moves the claim to decided
-- [ ] A test shows that steps come back in the order they were added, with their thread id
-- [ ] Against the running backend, `curl` walks one claim through start, an approval of $1,200, a payment attempt (403 with the sign-off message), a sign-off by `HND-01`, and `get_claim` showing it decided and paid $1,200.00 with Dana's sign-off. Then `uv run -m backend.seed` resets the queue
-- [ ] `npm run check:python` passes, with coverage at 80% or more
+- [x] Tests cover each move between states: start, then decline, refer, approve within the limit (decided) and approve over the limit (waiting for sign-off)
+- [x] Tests cover each refusal: starting a decided claim, deciding a waiting claim, declining with a payout, approving with $0, paying without an approval, paying twice, paying the wrong amount, signing off a decided claim, and signing off as an unknown handler
+- [x] Tests show the block holds: paying the full amount of an approval over $1,000 returns 403 and records no payment, paying $1,000 of a $1,500 approval is refused, and paying after a handler's sign-off is refused as already paid
+- [x] A test shows that a sign-off pays the approved payout, records who signed off and moves the claim to decided
+- [x] A test shows that steps come back in the order they were added, with their thread id
+- [x] Against the running backend, `curl` walks one claim through start, an approval of $1,200, a payment attempt (403 with the sign-off message), a sign-off by `HND-01`, and `get_claim` showing it decided and paid $1,200.00 with Dana's sign-off. Then `uv run -m backend.seed` resets the queue
+- [x] `npm run check:python` passes, with coverage at 80% or more
 
 ## Phase 3: The UnderCover Agent
 

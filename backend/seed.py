@@ -31,7 +31,7 @@ def seed() -> dict[str, int]:
     with closing(connect()) as connection, connection:
         connection.executescript(SCHEMA)
         connection.executemany(
-            "INSERT INTO claims VALUES (?, ?, ?, 'waiting', ?)",
+            "INSERT INTO claims VALUES (?, ?, ?, 'waiting', NULL, ?)",
             [
                 (
                     claim["claim_id"],
