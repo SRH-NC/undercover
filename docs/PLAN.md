@@ -159,13 +159,13 @@ Runs the whole queue with the real model and the dashboard open, and gets the pr
 
 Why: the earlier phases prove the parts with stub models. This proves the pilot works end to end on UnderCover's real queue, as the team would watch it.
 
-- [ ] After `uv run -m backend.seed`, with `npm run dev` running, `uv run -m agent` works the full queue on the real model. This is the plan's main API spend: one pass over 25 claims
-- [ ] While it runs, the Playwright MCP server shows the queue's states changing and a claim's steps appearing live on its page
-- [ ] At the end, no claim is waiting or in progress (any that failed are rerun with `uv run -m agent`), and the runner's summary is reported
-- [ ] Through the API: every decision has a reason of two or three sentences and a policy section. Every approval of $1,000 or less is paid, every approval over $1,000 is waiting for sign-off with no payment, and no decline or referral is paid
-- [ ] The decided queue is left in place for the student to review in the dashboard, with the approvals over $1,000 left for them to sign off
-- [ ] `docs/STATUS.md` says what's built and how to run it: `npm run dev`, `uv run -m agent`, `uv run -m backend.seed`, `npm run check`
-- [ ] `npm run check` passes, and the results are reported
+- [x] After `uv run -m backend.seed`, with `npm run dev` running, `uv run -m agent` works the full queue on the real model. This is the plan's main API spend: one pass over 25 claims
+- [x] While it runs, the Playwright MCP server shows the queue's states changing and a claim's steps appearing live on its page
+- [x] At the end, no claim is waiting or in progress (any that failed are rerun with `uv run -m agent`), and the runner's summary is reported
+- [x] Through the API: every decision has a reason of two or three sentences and a policy section. Every approval of $1,000 or less is paid, every approval over $1,000 is waiting for sign-off with no payment, and no decline or referral is paid
+- [x] The decided queue is left in place for the student to review in the dashboard, with the approvals over $1,000 left for them to sign off
+- [x] `docs/STATUS.md` says what's built and how to run it: `npm run dev`, `uv run -m agent`, `uv run -m backend.seed`, `npm run check`
+- [x] `npm run check` passes, and the results are reported
 
 ## Not in the pilot
 
