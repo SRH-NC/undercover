@@ -106,14 +106,14 @@ Builds the agent on LangChain's `create_agent` and OpenRouter, keeping the skele
 
 Why: this is the core of the pilot. The tests use a stub model with scripted replies, so they never call a real model.
 
-- [ ] A stub-model test runs a claim through the four reads, an approval of $420 and a payment of $420. The claim ends decided and paid, and the steps (tool calls, tool results and the final message) are recorded with the thread id
-- [ ] A stub-model test approves $1,200 and tries to pay it. The tool returns the backend's refusal, the claim is waiting for sign-off, and no payment is recorded
-- [ ] A test shows the tools take no ids and act only on the claim the run was given
-- [ ] A test of the queue runner, with `run` stubbed, shows it works only waiting and in-progress claims, carries on past a failure and prints the summary
-- [ ] `GET /api/instructions` returns the instructions, and the agent's system prompt is that text
-- [ ] `grep` shows that nothing in `agent/` imports from `backend` or opens a file in `data/`
-- [ ] With the backend running, `uv run -m agent CLM-1001` on the real model leaves CLM-1001 decided or waiting for sign-off, with a reason of two or three sentences, a policy section, and its steps in `GET /api/claims/CLM-1001/steps`. This is one claim's worth of API spend. Then `uv run -m backend.seed` resets the queue
-- [ ] `npm run check:python` passes, with coverage at 80% or more
+- [x] A stub-model test runs a claim through the four reads, an approval of $420 and a payment of $420. The claim ends decided and paid, and the steps (tool calls, tool results and the final message) are recorded with the thread id
+- [x] A stub-model test approves $1,200 and tries to pay it. The tool returns the backend's refusal, the claim is waiting for sign-off, and no payment is recorded
+- [x] A test shows the tools take no ids and act only on the claim the run was given
+- [x] A test of the queue runner, with `run` stubbed, shows it works only waiting and in-progress claims, carries on past a failure and prints the summary
+- [x] `GET /api/instructions` returns the instructions, and the agent's system prompt is that text
+- [x] `grep` shows that nothing in `agent/` imports from `backend` or opens a file in `data/`
+- [x] With the backend running, `uv run -m agent CLM-1001` on the real model leaves CLM-1001 decided or waiting for sign-off, with a reason of two or three sentences, a policy section, and its steps in `GET /api/claims/CLM-1001/steps`. This is one claim's worth of API spend. Then `uv run -m backend.seed` resets the queue
+- [x] `npm run check:python` passes, with coverage at 80% or more
 
 ## Phase 4: The dashboard's look and the queue
 

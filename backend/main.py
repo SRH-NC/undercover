@@ -1,9 +1,10 @@
 """The UnderCover backend."""
 
 import sqlite3
-from collections.abc import AsyncIterator
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
+from pathlib import Path
 from typing import Annotated, Any, Literal, Self
 
 from fastapi import Depends, FastAPI, HTTPException
@@ -14,9 +15,11 @@ from backend.seed import seed
 
 type JSON = dict[str, Any]
 
+INSTRUCTIONS = Path(__file__).parent / "instructions.md"
+
 
 @asynccontextmanager
-async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+async def lifespan(_: FastAPI) -> AsyncGenerator[None]:
     """Seed the database on the first start."""
     if not db.path().exists():
         seed()
@@ -233,6 +236,12 @@ def list_handlers(connection: Db) -> list[JSON]:
         "SELECT record FROM handlers ORDER BY handler_id"
     ).fetchall()
     return [db.record(row) for row in rows]
+
+
+@app.get("/api/instructions", operation_id="get_instructions")
+def get_instructions() -> dict[str, str]:
+    """Get the UnderCover Agent's instructions."""
+    return {"content": INSTRUCTIONS.read_text(encoding="utf-8")}
 
 
 @app.post("/api/claims/{claim_id}/start", operation_id="start_claim")
